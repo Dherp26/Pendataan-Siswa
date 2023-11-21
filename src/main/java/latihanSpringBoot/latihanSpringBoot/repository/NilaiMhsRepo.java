@@ -20,11 +20,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface NilaiMhsRepo extends CrudRepository<TbNilai, Integer> {
 
-    @Query(value = "SELECT * FROM `tb_nilai` WHERE `is_deleted` = 'false' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM  tb_nilai  WHERE  is_deleted  = 'false' ", nativeQuery = true)
     public List<Object[]> ListNilai();
 
     @Modifying(flushAutomatically = true)
-    @Query(value = "UPDATE `tb_nilai` SET `is_deleted` = 1 WHERE `id` =? ", nativeQuery = true)
+    @Query(value = "UPDATE  tb_nilai  SET  is_deleted  = 1 WHERE  id  =? ", nativeQuery = true)
     @Transactional
     public void DeleteNilai(int id);
 }

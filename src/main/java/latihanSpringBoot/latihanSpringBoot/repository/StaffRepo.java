@@ -21,20 +21,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface StaffRepo extends CrudRepository<TbStaff, Integer> {
 
-    @Query(value = "SELECT * FROM `tb_staff`  WHERE `is_deleted` = 'false' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM  tb_staff   WHERE  is_deleted  = 'false' ", nativeQuery = true)
     public List<Object[]> getlistStaff();
     
-    @Query(value = "SELECT * FROM `tb_staff` WHERE `id` =? AND `is_deleted` = 'false' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM  tb_staff  WHERE  id  =? AND  is_deleted  = 'false' ", nativeQuery = true)
     public List<Object[]> getlistStaffid(String id);
     
-    @Query(value = "SELECT * FROM `tb_staff` WHERE `is_deleted` = 'false' AND `nama` LIKE %?% ", nativeQuery = true)
+    @Query(value = "SELECT * FROM  tb_staff  WHERE  is_deleted  = 'false' AND  nama  LIKE %?% ", nativeQuery = true)
     public List<Object[]> getlistStaffname(String name);
     
-    @Query(value = "SELECT COUNT(*) FROM `tb_staff`  ", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM  tb_staff   ", nativeQuery = true)
     public int countStaff();
     
     @Modifying(flushAutomatically = true)
-    @Query(value = "UPDATE `tb_staff` SET `is_deleted` = 1 WHERE `id` =? ", nativeQuery = true)
+    @Query(value = "UPDATE  tb_staff  SET  is_deleted  = 1 WHERE  id  =? ", nativeQuery = true)
     @Transactional
     public void DeleteStaff(String id);
 }

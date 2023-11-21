@@ -21,20 +21,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface RuangRepo extends CrudRepository<TbRuang, Integer> {
 
-    @Query(value = "SELECT * FROM `tb_ruang`  WHERE `is_deleted` = 'false' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM  tb_ruang   WHERE  is_deleted  = 'false' ", nativeQuery = true)
     public List<Object[]> getlistRuang();
     
-    @Query(value = "SELECT * FROM `tb_ruang` WHERE `id` =? AND `is_deleted` = 'false' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM  tb_ruang  WHERE  id  =? AND  is_deleted  = 'false' ", nativeQuery = true)
     public List<Object[]> getlistRuangid(String id);
     
-    @Query(value = "SELECT COUNT(*) FROM `tb_ruang`  ", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM  tb_ruang   ", nativeQuery = true)
     public int countRuang();
     
-    @Query(value = "SELECT * FROM `tb_ruang` WHERE `is_deleted` = 'false' AND `ruang_id` LIKE %?% ", nativeQuery = true)
+    @Query(value = "SELECT * FROM  tb_ruang  WHERE  is_deleted  = 'false' AND  ruang_id  LIKE %?% ", nativeQuery = true)
     public List<Object[]> getlistRuangName(String name);
     
     @Modifying(flushAutomatically = true)
-    @Query(value = "UPDATE `tb_ruang` SET `is_deleted` = 1 WHERE `id` =? ", nativeQuery = true)
+    @Query(value = "UPDATE  tb_ruang  SET  is_deleted  = 1 WHERE  id  =? ", nativeQuery = true)
     @Transactional
     public void DeleteRuang(String id);
 }

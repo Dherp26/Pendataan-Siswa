@@ -21,20 +21,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface MatkulRepo extends CrudRepository<TbMatkul, Integer> {
 
-    @Query(value = "SELECT * FROM `tb_matkul`  WHERE `is_deleted` = 'false' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM   tb_matkul    WHERE   is_deleted   = 'false' ", nativeQuery = true)
     public List<Object[]> getlistMatkul();
     
-    @Query(value = "SELECT * FROM `tb_matkul` WHERE `id` =? AND `is_deleted` = 'false' ", nativeQuery = true)
+    @Query(value = "SELECT * FROM   tb_matkul   WHERE   id   =? AND   is_deleted   = 'false' ", nativeQuery = true)
     public List<Object[]> getlistMatkulid(String id);
     
-    @Query(value = "SELECT * FROM `tb_matkul` WHERE `is_deleted` = 'false' AND `nama_matkul` LIKE %?% ", nativeQuery = true)
+    @Query(value = "SELECT * FROM   tb_matkul   WHERE   is_deleted   = 'false' AND   nama_matkul   LIKE %?% ", nativeQuery = true)
     public List<Object[]> getlistMatkulname(String name);
     
-    @Query(value = "SELECT COUNT(*) FROM `tb_matkul`  ", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM   tb_matkul    ", nativeQuery = true)
     public int countMatkul();
     
     @Modifying(flushAutomatically = true)
-    @Query(value = "UPDATE `tb_matkul` SET `is_deleted` = 1 WHERE `id` =? ", nativeQuery = true)
+    @Query(value = "UPDATE   tb_matkul   SET   is_deleted   = 1 WHERE   id   =? ", nativeQuery = true)
     @Transactional
     public void DeleteMatkul(String id);
 }

@@ -18,6 +18,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LoginRepo extends CrudRepository<TbLogin, Integer> {
 
-    @Query(value = "SELECT * FROM `tb_login` WHERE `username` =? AND `password` =?", nativeQuery = true)
+    @Query(value = "SELECT * FROM tb_login WHERE username =? AND password =?", nativeQuery = true)
     public List<Object[]> empLogin(String username, String password);
 }
